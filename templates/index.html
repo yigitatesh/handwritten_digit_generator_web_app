@@ -27,11 +27,11 @@
 
     <!-- Input values digit type and number of digits -->
     <form action="{{ url_for('generate') }}" method="post">
-		<p>Type which digit you want to be generated.<br>
-		(You can leave it empty to generate a random type)</p>
+		<p>Type which digit you want to be generated (like 4).<br>
+		(You can leave it empty to generate random digit(s))</p>
     	<input type="text" name="digit_class" placeholder="digit" />
 		
-		<p>Type number of handwritten digit(s) to be generated.<br>
+		<p>Type number of handwritten digit(s) to be generated (like 10).<br>
 		(You can leave it empty to generate 1 digit)</p>
         <input type="text" name="num_digits" placeholder="number of digits" /><br><br>
 
