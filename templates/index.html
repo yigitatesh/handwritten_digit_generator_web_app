@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Handwritten Digit Generator</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  
+  <style>
+  p		{text-align: center}
+  body 	{text-align: center}
+  </style>
+</head>
+
+<body>
+
+ <div class="login">
+	<br>
+	<h1>Generate Artificial Handwritten Digits</h1>
+	
+	<!-- General info -->
+	<p>Welcome to the <b>Handwritten Digit Generator</b>! </p>
+	<br>
+
+    <!-- Input values digit type and number of digits -->
+    <form action="{{ url_for('generate') }}" method="post">
+		<p>Type which digit you want to be generated.<br>
+		(You can leave it empty to generate a random type)</p>
+    	<input type="text" name="digit_class" placeholder="digit" />
+		
+		<p>Type number of handwritten digit(s) to be generated.<br>
+		(You can leave it empty to generate 1 digit)</p>
+        <input type="text" name="num_digits" placeholder="number of digits" /><br><br>
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Generate</button>
+    </form>
+
+    <br>
+	
+	<!-- Showing Generation Results -->
+    <br>
+	{% if generated_images %}
+		<b>Generated Handwritten Digits:</b> 
+		<br><br>
+		{% for img_data in generated_images %}
+			<img id="picture" src="data:image/jpeg;base64,{{ img_data }}">
+		{% endfor %}
+	{% endif %}
+	
+	<!-- Showing Errors -->
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+		{% for message in messages %}
+		  <br>
+		  {{ message }}
+		{% endfor %}
+	  {% endif %}
+	{% endwith %}
+ </div>
+
+</body>
+</html>
