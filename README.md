@@ -1,2 +1,2 @@
-# handwritten_digit_generator_web_app
+# Handwritten Digit Generator Web App
 Artificial Generator that draws handwritten digits
