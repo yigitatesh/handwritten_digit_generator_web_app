@@ -1,7 +1,7 @@
 # Import Libraries
 import numpy as np
 import tensorflow as tf
-from tensorflow.keras import layers, models
+from tensorflow.keras.models import load_model
 
 from flask import Flask, request, jsonify, render_template, flash
 import os
@@ -21,51 +21,20 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 os.environ["TF_FORCE_GPU_ALLOW_GROWTH"] = "true"
 
 
-### Define Generator
+### Generator
 
 ## Settings
 latent_dim = 128
 num_classes = 10
 
-# define layers
-## label input
-in_label = layers.Input(shape=(1,))
-label_embedding = layers.Embedding(num_classes, 50)(in_label)
-# scale up to low resolution image dimensions
-n_nodes = 7 * 7
-label_x = layers.Dense(n_nodes)(label_embedding)
-label_x = layers.Reshape((7, 7, 1))(label_x)
-
-## image input
-in_lat_vec = layers.Input(shape=(latent_dim,))
-
-x = layers.Dense(7 * 7 * 128)(in_lat_vec)
-x = layers.LeakyReLU(alpha=0.2)(x)
-x = layers.Reshape((7, 7, 128))(x)
-
-# concatenate images and labels
-concat = layers.Concatenate()([x, label_x])
-
-x = layers.Conv2DTranspose(128, (4, 4), strides=(2, 2), padding="same")(concat)
-x = layers.LeakyReLU(alpha=0.2)(x)
-x = layers.BatchNormalization()(x)
-
-x = layers.Conv2DTranspose(128, (4, 4), strides=(2, 2), padding="same")(x)
-x = layers.LeakyReLU(alpha=0.2)(x)
-x = layers.BatchNormalization()(x)
-
-out = layers.Conv2D(1, (7, 7), padding="same", activation="sigmoid")(x)
-
-# define model
-generator = models.Model(inputs=[in_lat_vec, in_label], outputs=out)
-
-# dummy prediction for initializing generator
-generator([np.zeros((1, latent_dim)), np.zeros((1, 1))], training=False)
-
 ## Load Generator Model
 epoch = 50
 model_name = "cgan_1"
-generator.load_weights(os.path.join("model", model_name, "gen_epoch{}".format(epoch), "gen"))
+file_name = "model/gen_" + model_name + "_epoch" + str(epoch) + ".h5"
+generator = load_model(file_name)
+
+# dummy prediction for initializing generator
+generator([np.zeros((1, latent_dim)), np.zeros((1, 1))], training=False)
 
 
 ### Some Settings
