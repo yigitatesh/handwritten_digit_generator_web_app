@@ -1,7 +1,6 @@
 # Import Libraries
 import numpy as np
 import tensorflow as tf
-import keras
 from tensorflow.keras import layers, models
 
 from flask import Flask, request, jsonify, render_template, flash
