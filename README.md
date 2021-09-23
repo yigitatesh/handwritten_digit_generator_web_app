@@ -12,11 +12,11 @@ Go to [app link](https://handwritten-digit-generator.herokuapp.com/) to test thi
 3. Click "Generate" button.
 
 ## Examples
-Generated "4" digits:
+Generated "4" digits: <br>
 ![generated "4" digits](https://raw.githubusercontent.com/yigitatesh/handwritten_digit_generator_web_app/main/results/generated_4_digits.PNG)
 
-Generated random digits (1):
+Generated random digits (1): <br>
 ![generated random digits 1](https://raw.githubusercontent.com/yigitatesh/handwritten_digit_generator_web_app/main/results/generated_random_digits.PNG)
 
-Generated random digits (2):
+Generated random digits (2): <br>
 ![generated random digits 2](https://raw.githubusercontent.com/yigitatesh/handwritten_digit_generator_web_app/main/results/generated_random_digits_2.PNG)
