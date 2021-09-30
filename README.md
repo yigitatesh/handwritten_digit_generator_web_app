@@ -1,8 +1,24 @@
-# Handwritten Digit Generator Web App
-Artificial Generator that draws handwritten digits <br>
+# Handwritten Digit Generator
+Artificial Generator that generates handwritten digits. <br>
 
 ## Description
-This app uses a **GAN (Generative Adversarial Networks)** model to generate new digit drawings. <br>
+This app uses a **cGAN (Conditional Generative Adversarial Networks)** model to generate realistic digit drawings. <br>
+
+## Model
+**cGAN** model consists of a **generator** and a **discriminator**. <br>
+
+Comparison of GAN and cGAN architectures: <br>
+
+
+cGAN structure has an additional input called "label" that is an input for both generator and discriminator. <br>
+Using this additional condition, cGAN model can generate images for different types. As an example; we can give digit "7" as a condition
+and cGAN can generate drawings of only digit "7". <br>
+
+### Generator Architecture
+
+
+### Discriminator Architecture
+
 
 ## Usage
 Go to [app link](https://handwritten-digit-generator.herokuapp.com/) to test this app. <br>
