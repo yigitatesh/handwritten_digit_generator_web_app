@@ -7,18 +7,18 @@ This app uses a **cGAN (Conditional Generative Adversarial Networks)** model to 
 ## Model
 **cGAN** model consists of a **generator** and a **discriminator**. <br>
 
-Comparison of GAN and cGAN architectures: <br>
-
+Comparison of GAN and cGAN architectures: <br><br>
+<img alt="GAN and cGAN" src="https://raw.githubusercontent.com/yigitatesh/handwritten_digit_generator_web_app/main/model/images/gan_and_cgan.png" width="600"/> <br>
 
 cGAN structure has an additional input called "label" that is an input for both generator and discriminator. <br>
 Using this additional condition, cGAN model can generate images for different types. As an example; we can give digit "7" as a condition
 and cGAN can generate drawings of only digit "7". <br>
 
 ### Generator Architecture
-
+<img alt="Generator" src="https://raw.githubusercontent.com/yigitatesh/handwritten_digit_generator_web_app/main/model/images/generator_structure.png" width="700"/> <br>
 
 ### Discriminator Architecture
-
+<img alt="Discriminator" src="https://raw.githubusercontent.com/yigitatesh/handwritten_digit_generator_web_app/main/model/images/discriminator_structure.png" width="700"/> <br>
 
 ## Usage
 Go to [app link](https://handwritten-digit-generator.herokuapp.com/) to test this app. <br>
